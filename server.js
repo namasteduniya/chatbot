@@ -55,6 +55,10 @@ const Product = mongoose.model("Product", productSchema);
 // OpenAI Initialization
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+app.get("/",(req,res)=>{
+    res.send("welcome to home page")
+})
+
 // Chatbot API Endpoint
 app.post("/chat", async (req, res) => {
     const { message } = req.body;
@@ -85,5 +89,5 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
