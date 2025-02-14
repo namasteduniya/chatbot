@@ -23,12 +23,15 @@ app.use(cors({
 }));
 
 // Connect to MongoDB Compass
-try{
-    mongoose.connect(process.env.MONGO_URI)
-    console.log('db is connected')
-}  catch(error){
-    console.log("Something went wrong while connecting to db")
+const connectdb = async()=>{
+    try{
+       await mongoose.connect(process.env.MONGO_URI)
+        console.log('db is connected')
+    }  catch(error){
+        console.log("Something went wrong while connecting to db")
+    }
 }
+connectdb()
 
 
 // Define Supplier & Product Schema
